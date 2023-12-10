@@ -9,23 +9,23 @@ import jakarta.persistence.Table;
 @Table(name = "animal")
 public class Animal {
     @Id
-    int id;
-    @Column(name = "`name`")
-    String name;
+    private int id;
+    @Column(name = "\"name\"")
+    private String name;
     @Column(name = "age")
-    int age;
-    @Column(name = "type")
-    int type;
+    private int age;
+    @Column(name = "\"type\"")
+    private int type;
     @Column(name = "sex")
-    int sex;
+    private int sex;
     @Column(name = "place")
-    int place;
+    private int place;
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -33,7 +33,7 @@ public class Animal {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -41,7 +41,7 @@ public class Animal {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(final int age) {
         this.age = age;
     }
 
@@ -49,7 +49,7 @@ public class Animal {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(final int type) {
         this.type = type;
     }
 
@@ -57,7 +57,7 @@ public class Animal {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(final int sex) {
         this.sex = sex;
     }
 
@@ -65,7 +65,7 @@ public class Animal {
         return place;
     }
 
-    public void setPlace(int place) {
+    public void setPlace(final int place) {
         this.place = place;
     }
 }

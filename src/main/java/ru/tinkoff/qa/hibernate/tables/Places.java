@@ -8,21 +8,12 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "places")
 public class Places {
-    @Id
-    @Column(name = "id")
-    int id;
-    @Column(name = "row")
-    int row;
-    @Column(name = "place_num")
-    int place_num;
-    @Column(name = "`name`")
-    String name;
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -30,25 +21,39 @@ public class Places {
         return row;
     }
 
-    public void setRow(int row) {
+    public void setRow(final int row) {
         this.row = row;
     }
 
-    public int getPlace_num() {
-        return place_num;
+    public int getPlaceNum() {
+        return placeNum;
     }
 
-    public void setPlace_num(int place_num) {
-        this.place_num = place_num;
+    public void setPlaceNum(final int placeNum) {
+        this.placeNum = placeNum;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
+    @Id
+    @Column(name = "id")
+    private int id;
+    @Column(name = "\"row\"")
+    private int row;
 
+    @Column(name = "place_num")
+    private int placeNum;
+    @Column(name = "\"name\"")
+    private String name;
 }
+
+
+
+
+

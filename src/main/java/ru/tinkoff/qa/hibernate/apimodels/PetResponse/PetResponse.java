@@ -1,75 +1,75 @@
 package ru.tinkoff.qa.hibernate.apimodels.PetResponse;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ru.tinkoff.qa.hibernate.apimodels.PetRequest.Category;
 import ru.tinkoff.qa.hibernate.apimodels.PetRequest.TagsItem;
 
-public class PetResponse{
+import java.util.List;
 
-	@JsonProperty("photoUrls")
-	private List<String> photoUrls;
+public class PetResponse {
 
-	@JsonProperty("name")
-	private String name;
+    @JsonProperty("photoUrls")
+    private List<String> photoUrls;
 
-	@JsonProperty("id")
-	private int id;
+    @JsonProperty("name")
+    private String name;
 
-	@JsonProperty("category")
-	private Category category;
+    @JsonProperty("id")
+    private int id;
 
-	@JsonProperty("tags")
-	private List<TagsItem> tags;
+    @JsonProperty("category")
+    private Category category;
 
-	@JsonProperty("status")
-	private String status;
+    @JsonProperty("tags")
+    private List<TagsItem> tags;
 
-	public void setPhotoUrls(List<String> photoUrls){
-		this.photoUrls = photoUrls;
-	}
+    @JsonProperty("status")
+    private String status;
+    public void setPhotoUrls(final List<String> photoUrls) {
+        this.photoUrls = photoUrls;
+    }
 
-	public List<String> getPhotoUrls(){
-		return photoUrls;
-	}
+    public List<String> getPhotoUrls() {
+        return photoUrls;
+    }
 
-	public void setName(String name){
-		this.name = name;
-	}
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	public String getName(){
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setId(int id){
-		this.id = id;
-	}
+    public void setId(final int id) {
+        this.id = id;
+    }
 
-	public int getId(){
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setCategory(Category category){
-		this.category = category;
-	}
+    public void setCategory(final Category category) {
+        this.category = category;
+    }
 
-	public Category getCategory(){
-		return category;
-	}
+    public Category getCategory() {
+        return category;
+    }
 
-	public void setTags(List<TagsItem> tags){
-		this.tags = tags;
-	}
+    public void setTags(final List<TagsItem> tags) {
+        this.tags = tags;
+    }
 
-	public List<TagsItem> getTags(){
-		return tags;
-	}
+    public List<TagsItem> getTags() {
+        return tags;
+    }
 
-	public void setStatus(String status){
-		this.status = status;
-	}
+    public void setStatus(final String status) {
+        this.status = status;
+    }
 
-	public String getStatus(){
-		return status;
-	}
+    public String getStatus() {
+        return status;
+    }
 }

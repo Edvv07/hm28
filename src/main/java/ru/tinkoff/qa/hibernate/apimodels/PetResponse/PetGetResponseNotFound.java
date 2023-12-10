@@ -2,7 +2,7 @@ package ru.tinkoff.qa.hibernate.apimodels.PetResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class PetDeleteResponse {
+public class PetGetResponseNotFound {
 
     @JsonProperty("code")
     private int code;

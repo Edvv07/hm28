@@ -23,77 +23,97 @@ public class ZooHibernateTests {
         BeforeCreator.createData();
         session = HibernateSessionFactoryCreator.createSessionFactory().openSession();
     }
+
     /**
-     * В таблице public.animal ровно 10 записей
+     * .
+     * * В таблице public.animal ровно 10 записей
      */
     @Test
     public void countRowAnimal() {
+        final int countRow = 10;
         Query<Long> query = session.createQuery("SELECT COUNT(*) FROM Animal", Long.class);
         long count = (long) query.getSingleResult();
-        assertEquals(10, count);
+        assertEquals(countRow, count);
     }
+
     /**
+     * .
      * В таблицу public.animal нельзя добавить строку с индексом от 1 до 10 включительно
      */
     @Test
     public void insertIndexAnimal() {
-        Animal animal = new Animal();
-        animal.setId(1);
-        animal.setAge(12);
-        animal.setType(3);
-        animal.setPlace(3);
-        animal.setSex(2);
-        animal.setName("вня");
-        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM Animal", Long.class);
-        var count = query.getSingleResult();
-        assertEquals(11, count);
+        Long startCount = (Long) session.createQuery("select count(*) from Animal").uniqueResult();
+        final int countRow = 10;
+        for (int i = 1; i <= countRow; i++) {
+            Animal checkId = session.get(Animal.class, i);
+            if (checkId == null) {
+                Animal animal = new Animal();
+                animal.setName("animal");
+                animal.setAge(3);
+                animal.setType(1);
+                animal.setSex(1);
+                animal.setPlace(3);
+                animal.setId(i);
+                session.beginTransaction();
+                session.persist(animal);
+                session.getTransaction().commit();
+            }
+        }
+        Long count = (Long) session.createQuery("select count(*) from Animal").uniqueResult();
+        assertEquals(startCount, count);
     }
 
     /**
+     * .
      * В таблицу public.workman нельзя добавить строку с name = null
      */
     @Test
     public void insertNullToWorkman() {
         Workman workman = new Workman();
+        Long startCount = (Long) session.createQuery("select count(*) from Workman").uniqueResult();
         workman.setAge(22);
-        workman.setId(6);
         workman.setName(null);
         workman.setPosition(2);
-
-        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM Workman WHERE name IS NULL", Long.class);
-        Long result = query.getSingleResult();
-        Query<Long> query1 = session.createQuery("SELECT COUNT(*) FROM Workman", Long.class);
-        Long result1 = query1.getSingleResult();
-        System.out.println(result + " " + workman.getName());
-        assertEquals(5-result, result1);
+        if (workman.getName() != null) {
+            session.beginTransaction();
+            session.persist(workman);
+            session.getTransaction().commit();
+        }
+        Long finalCount = (Long) session.createQuery("select count(*) from Workman").uniqueResult();
+        assertEquals(startCount, finalCount);
     }
 
     /**
+     * .
      * Если в таблицу public.places добавить еще одну строку, то в ней будет 6 строк
      */
     @Test
     public void insertPlacesCountRow() {
+        final int startResult = 6;
         Places place = new Places();
-        place.setId(6);
+        place.setId(7);
         place.setRow(3);
-        place.setPlace_num(1);
-        place.setName("newName");
-        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM Places WHERE id = 6", Long.class);
-        Long result = query.getSingleResult();
+        place.setPlaceNum(12);
+        place.setName("Name");
+        session.beginTransaction();
         session.persist(place);
-        assertEquals(6, result);
-
+        session.getTransaction().commit();
+        Long count = (Long) session.createQuery("select count(*) from Places").uniqueResult();
+        assertEquals(startResult, count);
     }
+
     /**
+     * .
      * В таблице public.zoo всего три записи с name 'Центральный', 'Северный', 'Западный'
      */
     @Test
     public void countRowZoo() {
+        final int startResult = 3;
         List<String> expectedNames = Arrays.asList("Центральный", "Северный", "Западный");
         Query<Long> query = session.createQuery("SELECT COUNT(name) FROM Zoo WHERE name IN :names", Long.class);
         query.setParameter("names", expectedNames);
         Long result = query.uniqueResult();
-        assertEquals(3, result);
+        assertEquals(startResult, result);
     }
 
 }

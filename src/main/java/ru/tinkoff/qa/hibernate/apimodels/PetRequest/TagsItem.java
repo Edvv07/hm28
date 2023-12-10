@@ -2,27 +2,27 @@ package ru.tinkoff.qa.hibernate.apimodels.PetRequest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TagsItem{
+public class TagsItem {
 
-	@JsonProperty("name")
-	private String name;
+    @JsonProperty("name")
+    private String name;
 
-	@JsonProperty("id")
-	private int id;
+    @JsonProperty("id")
+    private int id;
 
-	public void setName(String name){
-		this.name = name;
-	}
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	public String getName(){
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setId(int id){
-		this.id = id;
-	}
+    public void setId(final int id) {
+        this.id = id;
+    }
 
-	public int getId(){
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 }

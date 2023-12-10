@@ -2,27 +2,26 @@ package ru.tinkoff.qa.hibernate.apimodels.PetResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Category{
+public class Category {
+    @JsonProperty("name")
+    private String name;
 
-	@JsonProperty("name")
-	private String name;
+    @JsonProperty("id")
+    private int id;
 
-	@JsonProperty("id")
-	private int id;
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	public void setName(String name){
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getName(){
-		return name;
-	}
+    public void setId(final int id) {
+        this.id = id;
+    }
 
-	public void setId(int id){
-		this.id = id;
-	}
-
-	public int getId(){
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 }

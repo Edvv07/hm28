@@ -5,20 +5,19 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.tinkoff.qa.hibernate.apimodels.PetRequest.PetPutRequest;
 import ru.tinkoff.qa.hibernate.apimodels.PetRequest.PetRequest;
-import ru.tinkoff.qa.hibernate.apimodels.PetResponse.*;
+import ru.tinkoff.qa.hibernate.apimodels.PetResponse.PetGetResponse;
+import ru.tinkoff.qa.hibernate.apimodels.PetResponse.PetGetResponseNotFound;
+import ru.tinkoff.qa.hibernate.apimodels.PetResponse.PetPutResponse;
+import ru.tinkoff.qa.hibernate.apimodels.PetResponse.PetResponse;
 
 public class PetsApiTests {
     public static final String BASE_URL = "https://petstore.swagger.io/v2/pet/";
-
     private PetRequest petRequest;
     private PetResponse petResponse;
     private PetGetResponse getResponse;
-    private PetDeleteResponse petDeleteResponse;
-    private PetGetResponse404 petGetResponse404;
+    private PetGetResponseNotFound petGetResponseNotFound;
     private PetPutResponse petPutResponse;
-    private PetPutRequest petPutRequest;
 
     @BeforeEach
     public final void init() {
@@ -85,11 +84,11 @@ public class PetsApiTests {
                 .then()
                 .statusCode(200);
 
-        petGetResponse404 = RestAssured.given()
+        petGetResponseNotFound = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .body(petRequest)
                 .get(BASE_URL + petRequest.getId())
-                .as(PetGetResponse404.class);
-        Assertions.assertEquals("Pet not found", petGetResponse404.getMessage());
+                .as(PetGetResponseNotFound.class);
+        Assertions.assertEquals("Pet not found", petGetResponseNotFound.getMessage());
     }
 }
