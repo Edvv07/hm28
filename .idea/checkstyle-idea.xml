@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CheckStyle-IDEA" serialisationVersion="2">
+    <checkstyleVersion>10.12.5</checkstyleVersion>
+    <scanScope>AllSourcesWithTests</scanScope>
+    <suppressErrors>true</suppressErrors>
+    <copyLibs>true</copyLibs>
+    <option name="thirdPartyClasspath" />
+    <option name="activeLocationIds">
+      <option value="8042f2ea-d8db-49ec-af32-955976a910ec" />
+    </option>
+    <option name="locations">
+      <list>
+        <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
+        <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
+        <ConfigurationLocation id="8042f2ea-d8db-49ec-af32-955976a910ec" type="LOCAL_FILE" scope="All" description="tinkoff">$PROJECT_DIR$/../../../../t_checks_2023-77b29a71-0fc9-48be-9cef-0c182dc4bb38/T_checks_2020 (1).xml</ConfigurationLocation>
+      </list>
+    </option>
+  </component>
+</project>
